@@ -63,18 +63,19 @@ const handleClear = () => {
 .search-icon {
     position: absolute;
     left: var(--spacing-md);
-    color: var(--text-light);
-    font-size: var(--font-size-md);
-    pointer-events: none;
+    color: var(--text-muted);
+    font-size: 18px;
 }
 
 .search-input {
     width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) calc(var(--spacing-md) * 2 + 1em);
+    height: 32px;
+    padding: 0 var(--spacing-xl) 0 calc(var(--spacing-xl) + var(--spacing-md));
     border: 1px solid var(--border-color);
     border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-md);
-    transition: border-color 0.2s;
+    font-size: var(--font-size-sm);
+    color: var(--text-color);
+    background: #FFFFFF;
 }
 
 .search-input:focus {
@@ -82,19 +83,21 @@ const handleClear = () => {
     border-color: var(--primary-color);
 }
 
+.search-input::placeholder {
+    color: var(--text-muted);
+}
+
 .clear-button {
     position: absolute;
-    right: var(--spacing-md);
+    right: var(--spacing-sm);
     background: none;
     border: none;
-    color: var(--text-light);
+    color: var(--text-muted);
     cursor: pointer;
-    padding: 0;
-    font-size: var(--font-size-md);
+    padding: var(--spacing-xs);
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: color 0.2s;
 }
 
 .clear-button:hover {

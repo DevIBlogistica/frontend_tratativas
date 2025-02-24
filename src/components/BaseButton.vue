@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-    variant?: 'primary' | 'secondary' | 'outline' | 'danger';
+    variant?: 'primary' | 'outline';
     size?: 'sm' | 'md' | 'lg';
     icon?: string;
     disabled?: boolean;
@@ -17,7 +17,7 @@ defineProps<{
         { 'base-button-loading': loading }
     ]" :disabled="disabled || loading" :type="type || 'button'">
         <span v-if="loading" class="loading-spinner"></span>
-        <span v-else-if="icon" class="button-icon">{{ icon }}</span>
+        <span v-else-if="icon" class="material-icons">{{ icon }}</span>
         <span class="button-content">
             <slot></slot>
         </span>
@@ -30,17 +30,17 @@ defineProps<{
     align-items: center;
     justify-content: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-sm) var(--spacing-md);
-    border: 1px solid transparent;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
     border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-md);
+    font-size: var(--font-size-sm);
     font-weight: 500;
     line-height: 1.5;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s;
     background-color: var(--primary-color);
-    color: var(--white);
+    color: #FFFFFF;
+    height: 32px;
 }
 
 .base-button:hover:not(:disabled) {
@@ -53,34 +53,23 @@ defineProps<{
 }
 
 /* Variants */
-.base-button-secondary {
-    background-color: var(--secondary-color);
-}
-
 .base-button-outline {
     background-color: transparent;
-    border-color: var(--primary-color);
+    border: 1px solid var(--primary-color);
     color: var(--primary-color);
-}
-
-.base-button-outline:hover:not(:disabled) {
-    background-color: var(--primary-color);
-    color: var(--white);
-}
-
-.base-button-danger {
-    background-color: var(--danger-color);
 }
 
 /* Sizes */
 .base-button-sm {
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-sm);
+    height: 28px;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-xs);
 }
 
 .base-button-lg {
-    padding: var(--spacing-md) var(--spacing-lg);
-    font-size: var(--font-size-lg);
+    height: 40px;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-md);
 }
 
 /* Loading state */
@@ -99,6 +88,10 @@ defineProps<{
     animation: spin 0.75s linear infinite;
 }
 
+.material-icons {
+    font-size: 18px;
+}
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -107,12 +100,6 @@ defineProps<{
     to {
         transform: rotate(360deg);
     }
-}
-
-.button-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .button-content {

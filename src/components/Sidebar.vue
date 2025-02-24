@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router';
-import ThemeToggle from './ThemeToggle.vue';
 
 const menuItems = [
     {
         name: 'Dashboard',
         path: '/',
-        icon: '📊'
+        icon: 'home'
     },
     {
-        name: 'Tratativas',
-        path: '/tratativas',
-        icon: '📝'
+        name: 'Agendamentos',
+        path: '/agendamentos',
+        icon: 'calendar'
+    },
+    {
+        name: 'Arquivos',
+        path: '/arquivos',
+        icon: 'file'
     }
 ];
 </script>
@@ -19,19 +23,25 @@ const menuItems = [
 <template>
     <aside class="sidebar">
         <div class="sidebar__header">
-            <img src="@/assets/logo.svg" alt="IB Logística" class="sidebar__logo" />
+            <div class="logo">IB Logística</div>
+            <button class="menu-toggle">
+                <span class="material-icons">menu</span>
+            </button>
         </div>
 
         <nav class="sidebar__nav">
             <RouterLink v-for="item in menuItems" :key="item.path" :to="item.path" class="sidebar__link"
                 active-class="sidebar__link--active">
-                <span class="sidebar__link-icon">{{ item.icon }}</span>
+                <span class="material-icons">{{ item.icon }}</span>
                 <span class="sidebar__link-text">{{ item.name }}</span>
             </RouterLink>
         </nav>
 
         <div class="sidebar__footer">
-            <ThemeToggle />
+            <RouterLink to="/configuracoes" class="sidebar__link">
+                <span class="material-icons">settings</span>
+                <span class="sidebar__link-text">Configurações</span>
+            </RouterLink>
         </div>
     </aside>
 </template>
@@ -44,68 +54,59 @@ const menuItems = [
     left: 0;
     top: 0;
     background: var(--card-bg);
-    border-right: 1px solid var(--border-color);
     display: flex;
     flex-direction: column;
-    z-index: var(--z-sidebar);
 }
 
 .sidebar__header {
-    padding: var(--spacing-lg);
-    border-bottom: 1px solid var(--border-color);
+    height: var(--header-height);
+    padding: 0 var(--spacing-md);
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
 }
 
-.sidebar__logo {
-    height: 32px;
-    width: auto;
+.logo {
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-color);
+}
+
+.menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    padding: var(--spacing-xs);
 }
 
 .sidebar__nav {
     flex: 1;
-    padding: var(--spacing-md);
-    display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) 0;
 }
 
 .sidebar__link {
     display: flex;
     align-items: center;
     gap: var(--spacing-md);
-    padding: var(--spacing-md);
-    border-radius: var(--border-radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
     color: var(--text-muted);
     text-decoration: none;
-    transition: all 0.2s ease;
+    font-size: var(--font-size-md);
 }
 
-.sidebar__link:hover {
-    background: var(--bg-light);
-    color: var(--text-primary);
-}
-
+.sidebar__link:hover,
 .sidebar__link--active {
-    background: var(--primary-color-light);
-    color: var(--primary-color);
+    color: var(--text-color);
+    background: var(--background-color);
 }
 
-.sidebar__link-icon {
-    font-size: 1.25rem;
-    line-height: 1;
-}
-
-.sidebar__link-text {
-    font-size: 0.875rem;
-    font-weight: 500;
+.material-icons {
+    font-size: 20px;
 }
 
 .sidebar__footer {
-    padding: var(--spacing-md);
+    padding: var(--spacing-sm) 0;
     border-top: 1px solid var(--border-color);
-    display: flex;
-    justify-content: center;
 }
 </style>

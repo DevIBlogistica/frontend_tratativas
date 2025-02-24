@@ -216,12 +216,13 @@ const prioridadeLabels = {
     justify-content: space-between;
     align-items: center;
     gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
 }
 
 .lista-tratativas__header h1 {
-    font-size: var(--font-size-xl);
-    font-weight: 500;
-    margin: 0;
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-color);
 }
 
 .lista-tratativas__actions {
@@ -232,6 +233,8 @@ const prioridadeLabels = {
 
 .table-container {
     overflow-x: auto;
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius-sm);
 }
 
 .table {
@@ -239,16 +242,20 @@ const prioridadeLabels = {
     border-collapse: collapse;
 }
 
-.table th,
-.table td {
-    padding: var(--spacing-md);
+.table th {
+    background: var(--primary-color);
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: var(--font-size-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
     text-align: left;
-    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
 }
 
-.table th {
-    font-weight: 500;
-    color: var(--text-muted);
+.table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .table th.sortable {
@@ -256,46 +263,42 @@ const prioridadeLabels = {
     user-select: none;
 }
 
-.table th.sortable:hover {
-    color: var(--text-primary);
-}
-
 .sort-icon {
     display: inline-block;
     margin-left: var(--spacing-xs);
-    opacity: 0.5;
+    opacity: 0.7;
 }
 
 .table-row {
     cursor: pointer;
-    transition: background-color 0.2s ease;
 }
 
 .table-row:hover {
-    background-color: var(--bg-light);
+    background-color: rgba(0, 0, 0, 0.02);
 }
 
 .status-badge {
-    display: inline-block;
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--border-radius-sm);
-    font-size: var(--font-size-sm);
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--spacing-sm);
+    border-radius: 12px;
+    font-size: var(--font-size-xs);
     font-weight: 500;
 }
 
 .status-badge--warning {
-    background: var(--warning-color-light);
-    color: var(--warning-color);
+    background: var(--status-pending);
+    color: #FFFFFF;
 }
 
 .status-badge--primary {
-    background: var(--primary-color-light);
-    color: var(--primary-color);
+    background: var(--status-completed);
+    color: #FFFFFF;
 }
 
-.status-badge--success {
-    background: var(--success-color-light);
-    color: var(--success-color);
+.status-badge--danger {
+    background: var(--status-canceled);
+    color: #FFFFFF;
 }
 
 .prioridade-badge {
@@ -326,8 +329,8 @@ const prioridadeLabels = {
 }
 
 .loading-cell {
-    height: 24px;
-    background: linear-gradient(90deg, var(--bg-light) 25%, var(--bg-lighter) 50%, var(--bg-light) 75%);
+    height: 20px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #f8f8f8 50%, #f0f0f0 75%);
     background-size: 200% 100%;
     animation: loading 1.5s infinite;
     border-radius: var(--border-radius-sm);
@@ -336,7 +339,8 @@ const prioridadeLabels = {
 .empty-state {
     text-align: center;
     color: var(--text-muted);
-    padding: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    font-size: var(--font-size-sm);
 }
 
 .error-message {
@@ -357,5 +361,9 @@ const prioridadeLabels = {
     100% {
         background-position: -200% 0;
     }
+}
+
+.search-field {
+    min-width: 300px;
 }
 </style>
